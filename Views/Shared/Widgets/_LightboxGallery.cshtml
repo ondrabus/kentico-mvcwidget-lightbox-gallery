@@ -1,0 +1,47 @@
+﻿
+@model Ondrabus.Kentico.Mvc.Widgets.LightboxGallery.ViewModel
+
+<div id="lightbox">
+    <div>
+        <ul>
+            <li v-for="(image, index) in images" :key="index" class="pic" @@click="() => showImg(index)">
+                <img :src="image.thumb" :alt="image.title" />
+            </li>
+        </ul>
+        <vue-easy-lightbox :visible="visible" :imgs="getImages" @@hide="handleHide"></vue-easy-lightbox>
+    </div>
+</div>
+
+<script src="~/Scripts/vue-easy-lightbox.umd.min.js"></script>
+<script type="text/javascript">
+    var lightbox = new Vue({
+        el: '#lightbox',
+        data: {
+            visible: false,
+            images: [
+                @foreach(var picture in Model.Pictures)
+                {
+                    @:{
+                        @:src: '@Url.Content(@picture.Url)',
+                        @:thumb: '@Url.Content(@picture.Thumbnail)',
+                        @:title: '@picture.AltText'
+                    @:},
+                }
+            ]
+        },
+        methods: {
+            showImg(index) {
+                this.index = index
+                this.visible = true
+            },
+            handleHide() {
+                this.visible = false
+            }
+        },
+        computed: {
+            getImages() {
+                return this.images.map(image => image.src)
+            }
+        }
+    })
+</script>

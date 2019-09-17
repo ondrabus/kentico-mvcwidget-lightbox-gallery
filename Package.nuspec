@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Ondrabus.Kentico.Mvc.Widget.Lightbox</id>
+    <version>1.0.0</version>
+    <authors>ondrabus</authors>
+    <owners>ondrabus</owners>
+    <projectUrl>https://github.com/ondrabus/kentico-mvcwidget-lightbox</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>LightBox gallery based on Vue.js. Supports using attachments, Media Library files or external images.</description>
+    <releaseNotes>Initial release</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>Kentico MVC widget lightbox vuejs</tags>
+    <dependencies>
+      <dependency id="Kentico.Libraries" version="12.0.0" />
+      <dependency id="vue" version="2.6.10" />
+    </dependencies>
+  </metadata>
+  <files>
+	<file src="bin\Debug\Ondrabus.Kentico.Mvc.Widgets.LightboxGallery.dll" target="lib\net461\Ondrabus.Kentico.Mvc.Widgets.LightboxGallery.dll" />
+
+	<!-- views -->
+	<file src="Views\Shared\Widgets\_LightboxGallery.cshtml" target="content\Views\Shared\Widgets\_LightboxGallery.cshtml" />
+	<file src="Views\Shared\FormComponents\_LightboxGalleryTypeSelectorComponent.cshtml" target="content\Views\Shared\FormComponents\_LightboxGalleryTypeSelectorComponent.cshtml" />
+	
+	<!-- CSS -->
+	<file src="Content\Widgets\LightboxGallery\LightboxGallery.css" target="content\Content\Widgets\LightboxGallery\LightboxGallery.css" />
+	
+	<!-- Vue easy lightbox -->
+	<file src="Scripts\vue-easy-lightbox.umd.min.js" target="content\Scripts\vue-easy-lightbox.umd.min.js" />
+  </files>
+</package>
+
+

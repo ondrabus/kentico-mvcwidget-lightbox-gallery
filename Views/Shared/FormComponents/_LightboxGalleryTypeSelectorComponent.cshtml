@@ -1,0 +1,29 @@
+﻿
+@using Ondrabus.Kentico.Mvc.Widgets.LightboxGallery
+@using Kentico.Forms.Web.Mvc
+
+@model Ondrabus.Kentico.Mvc.Widgets.LightboxGallery.TypeSelectorFormControl.LightboxGalleryTypeSelectorComponent
+
+<div class="lgts" id="lgtsapp">
+    <a v-for="type in this.types" :class="'ktc-btn ' + (type.value === selectedType ? 'ktc-btn-primary' : 'ktc-btn-default')" v-on:click="selectedType = type.value">{{type.text}}</a>
+    @{ 
+        var htmlAttributes = ViewData.GetEditorHtmlAttributes();
+        htmlAttributes[":value"] = "selectedType";
+    }
+    @Html.HiddenFor(m => m.Type, htmlAttributes)
+</div>
+
+<script type="text/javascript">
+    window.lgtsApp = new Vue({
+        el: '#lgtsapp',
+        data: {
+            selectedType: '@Model.Type',
+            types: [
+                @foreach (Ondrabus.Kentico.Mvc.Widgets.LightboxGallery.Type item in Enum.GetValues(typeof(Ondrabus.Kentico.Mvc.Widgets.LightboxGallery.Type)))
+                {
+                    @:{ "value": '@item.ToString()', "text": '@item.GetDescription()'},
+                }
+            ]
+        }
+    })
+</script>
